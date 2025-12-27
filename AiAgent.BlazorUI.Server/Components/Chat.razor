@@ -1,0 +1,38 @@
+﻿@using AiAgent.Agent.OpenApi.Models
+@using AiAgent.Agent.OpenApi.Services
+@page "/chat"
+@rendermode InteractiveServer
+@inject ChatService ChatService
+
+
+<div class="chat-container">
+    @foreach (var msg in messages)
+    {
+        <div class="message @msg.Role">
+            @msg.Content
+        </div>
+    }
+
+    <input @bind="userInput" @bind:event="oninput" />
+    <button @onclick="SendAsync">Send</button>
+</div>
+
+@code {
+    private readonly List<ChatMessage> messages = [];
+    private string userInput = "";
+
+    private async Task SendAsync()
+    {
+        messages.Add(new ChatMessage
+        {
+            Role = "user",
+            Content = userInput,
+            Timestamp = DateTime.UtcNow
+        });
+
+        var reply = await ChatService.AskAsync(userInput);
+        messages.Add(reply);
+
+        userInput = "";
+    }
+}
