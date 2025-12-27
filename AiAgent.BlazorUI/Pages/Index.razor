@@ -1,0 +1,23 @@
+@page "/"
+@inject AiAgent.Agent.OpenApi.OpenApiAgent Agent
+
+<h3>AI Agent Chat</h3>
+
+<textarea @bind="Conversation" rows="15" cols="80" readonly></textarea>
+<br />
+<input @bind="UserInput" size="80" />
+<button @onclick="Send">Send</button>
+
+@code {
+    private string Conversation { get; set; } = string.Empty;
+    private string UserInput { get; set; } = string.Empty;
+
+    private async Task Send()
+    {
+        if (string.IsNullOrWhiteSpace(UserInput)) return;
+        Conversation += $"User: {UserInput}\n";
+        var reply = await Agent.GetReplyAsync(UserInput);
+        Conversation += $"Agent: {reply}\n";
+        UserInput = string.Empty;
+    }
+}
