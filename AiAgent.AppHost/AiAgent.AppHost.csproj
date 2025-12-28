@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AiAgent.Agent.OpenApi\AiAgent.Agent.OpenApi.csproj" />
     <ProjectReference Include="..\AiAgent.BlazorUI.Server\AiAgent.BlazorUI.Server.csproj" />
+    <ProjectReference Include="..\AiAgent.GuiChat\AiAgent.GuiChat.csproj" />
   </ItemGroup>
 
 </Project>
