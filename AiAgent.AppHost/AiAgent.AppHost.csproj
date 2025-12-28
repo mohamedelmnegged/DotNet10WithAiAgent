@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>520946e7-5457-4526-a704-2f3cb37ca4cf</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AiAgent.Agent.OpenApi\AiAgent.Agent.OpenApi.csproj" />
+    <ProjectReference Include="..\AiAgent.BlazorUI.Server\AiAgent.BlazorUI.Server.csproj" />
+  </ItemGroup>
+
+</Project>
